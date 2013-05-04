@@ -7,7 +7,8 @@ namespace AsyncAwaitDemo
         public MainWindow()
         {
             InitializeComponent();
-            this.DataContext = new MainWindowViewModel();
+            this.DataContext = new MainWindowViewModel(
+                targetState => VisualStateManager.GoToElementState(App.Current.MainWindow, targetState, false));
         }
     }
 }
