@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft;
 
 namespace AsyncAwaitDemo
 {
@@ -47,13 +48,13 @@ namespace AsyncAwaitDemo
             this.IsUpdating = true;
             this.cts = new CancellationTokenSource();
             this.stateNavigator("Updating");
-            var ip = await Dns.GetHostAddressesAsync("localhost");
+            var ip = await DnsEx.GetHostAddressesAsync("localhost");
             await this.asyncSensor.ConnectAsync(ip.FirstOrDefault());
             var success = false;
             try
             {
                 await this.asyncSensor.UploadFirmwareAsync(
-                    new byte[] { 0, 1, 2 },
+                    new byte[] {0, 1, 2},
                     this.cts.Token,
                     new Progress<int>(p => this.Progress = p));
                 success = true;

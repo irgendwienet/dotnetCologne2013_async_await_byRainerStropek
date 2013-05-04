@@ -18,7 +18,8 @@ namespace AsyncAwaitDemo
                 throw new ArgumentNullException("address");
             }
 
-            return Task.Run(() =>
+
+            return TaskEx.Run(() =>
             {
                 // Note that method calls are serialized using this lock statement.
                 // If you want to specify a lock timeout, use Monitor.TryEnter(...)
@@ -45,7 +46,7 @@ namespace AsyncAwaitDemo
                 throw new ArgumentNullException("firmeware");
             }
 
-            return Task.Run(() =>
+            return TaskEx.Run(() =>
             {
                 lock (this.workInProgressLockObject)
                 {
@@ -72,7 +73,7 @@ namespace AsyncAwaitDemo
 
         public Task<bool> TryDisconnectAsync()
         {
-            return Task.Run(() =>
+            return TaskEx.Run(() =>
             {
                 lock (this.workInProgressLockObject)
                 {
