@@ -61,6 +61,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AsyncHeatSensor.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="MainWindowViewModel.cs" />
     <Compile Include="SyncHeatSensor.cs" />
